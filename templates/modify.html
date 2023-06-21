@@ -9,32 +9,32 @@
 <body>
   <div class="container"><hr>
   	<h2>ENTER ROLLNO OF STUDENT</h2><hr>
-  	<form action=" " method='POST'>
+  	<form action="" method='POST'>
       {% csrf_token %}
-  	<div class="mb-3">
+      <div class="mb-3">
 
     <label for="exampleInputEmail1" class="form-label">ENTER ROLLNO OF STUDENT</label>
-    <input type="number" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" name="id" required>
+    <input type="number" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" name="roll" required>
     <button type="submit" class="btn btn-primary mb-3">Show Data</button>
     </div>
   	</form>
   </div>	
   <div class="container box1"><hr>
   <h2>MODIFY DATA OF STUDENT</h2><hr>
-  <form action=" " method='POST'>
+  <form action="{% url 'update1'  %} " method='POST'>
     {% csrf_token %}
   <div class="mb-3">
-  	<input type="number" name="id" value="<?php echo $rl ?>" hidden>
+  	<input type="number" name="id" value="{{obj.id}}" hidden>
     <label for="exampleInputEmail1" class="form-label">NAME OF STUDENT</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" value="<?php echo $name?>" required>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" value="{{obj.name}}" required>
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">FACULTY</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="faculty" value="<?php echo $faculty ?>" required>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="faculty" value="{{obj.faculty}}" required>
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">PHONE NUMBER</label>
-    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="phone" value="<?php echo $phonenumber ?>" required>
+    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="phone" value="{{obj.phone}}" required>
   </div>
   
   <div class="mb-3 form-check">

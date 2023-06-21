@@ -12,8 +12,35 @@ def home(request):
     return render(request,'index.html',{'data':studentobj})
 
 def update(request):
-    return render(request,'modify.html')
+    data={}
+    if request.method=='POST':
+        roll=request.POST.get('roll')
+        print(roll)
+        studentobj=student.objects.get(roll=roll)
+        data={'obj':studentobj}
+        
+        
+    return render(request,'modify.html',data)
 
+def update1(request):
+    if request.method=='POST':
+        id=request.POST.get('id')
+        name=request.POST.get('name')
+        fac=request.POST.get('faculty')
+        ph=request.POST.get('phone')
+        obj=student.objects.get(id=id)
+        obj.name=name
+        obj.faculty=fac
+        obj.phone=ph
+        obj.save()
+        messages.success(request,"Data Updated successfully")
+        return redirect('home')
+        
+        
+    
+
+
+    
 def add(request):
     if request.method=='POST':
         name=request.POST.get('name')
